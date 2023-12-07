@@ -14,13 +14,6 @@ public class Main extends Application {
 
     private Controller controller;
 
-    /**
-     * Démarre l'application JAVAFx
-     * @param primaryStage
-     * La fenetre principale de l'application
-     * @throws Exception
-     * N'importe quel exception de l'application
-     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         Model model = new Model();
@@ -33,7 +26,7 @@ public class Main extends Application {
         controller.setSerialView(serialView);
 
         this.controller = controller;
-        controller.start();
+       controller.start();
     }
 
     @Override

@@ -2,7 +2,7 @@ package fr.epickiwi.pmf.view;
 
 import fr.epickiwi.pmf.model.Model;
 import fr.epickiwi.pmf.view.window.install.InstallStage;
-import fr.epickiwi.pmf.view.window.MainStage;
+import fr.epickiwi.pmf.view.window.main.MainStage;
 
 /**
  * Une vue de l'application pour la communication avec l'interface d'utilisateur

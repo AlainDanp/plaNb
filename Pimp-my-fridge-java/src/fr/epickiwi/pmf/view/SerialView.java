@@ -7,13 +7,11 @@ import javafx.application.Platform;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 /**
  * Une vue de l'application en charge de communiquer avec le port série
@@ -47,13 +45,11 @@ public class SerialView extends fr.epickiwi.pmf.view.View {
         this.sendTimer = new Timer();
     }
 
-    public ArrayList<CommPortIdentifier> searchPorts(){
+    public ArrayList<CommPortIdentifier> searchPorts() throws NoSuchElementException {
         Enumeration portList =  CommPortIdentifier.getPortIdentifiers();
         ArrayList<CommPortIdentifier> availablePorts = new ArrayList<>();
-
         while(portList.hasMoreElements()){
             CommPortIdentifier port = (CommPortIdentifier) portList.nextElement();
-
             if(port.getPortType() == CommPortIdentifier.PORT_SERIAL){
                 availablePorts.add(port);
             }
@@ -91,7 +87,7 @@ public class SerialView extends fr.epickiwi.pmf.view.View {
         System.out.println("Déconnecté du port série");
     }
 
-    private void sendSettings(){
+    private void sendSettings() throws JSONException {
         JSONObject json = new JSONObject();
         json.accumulate("type","refresh-settings");
         json.accumulate("order-temperature",this.orderTehmperatureProperty.get());
@@ -168,7 +164,11 @@ public class SerialView extends fr.epickiwi.pmf.view.View {
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
-                                controller.getMainController().dispatchMessage(text);
+                                try {
+                                    controller.getMainController().dispatchMessage(text);
+                                } catch (JSONException e) {
+                                    throw new RuntimeException(e);
+                                }
                             }
                         });
                     }
@@ -183,7 +183,11 @@ public class SerialView extends fr.epickiwi.pmf.view.View {
     private class OnOrderTemperatureChange implements ChangeListener<Number>{
         @Override
         public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
-            sendSettings();
+            try {
+                sendSettings();
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

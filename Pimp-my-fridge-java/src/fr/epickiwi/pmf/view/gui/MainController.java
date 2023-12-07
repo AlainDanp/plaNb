@@ -167,8 +167,4 @@ public class MainController extends ViewController {
         }
     }
 
-    /*private void preSetTemp(){
-        preSetTemp.setItems(this.view.getModel().getPreSetTemp());
-    }*/
-
 }

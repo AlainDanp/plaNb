@@ -8,12 +8,12 @@ import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
+import lab.json;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PipedReader;
@@ -36,7 +36,7 @@ public class MainController {
         this.guiView.getInstallStage().close();
     }
 
-    public void dispatchMessage(String json){
+    public void dispatchMessage(String json) throws JSONException {
         JSONObject parsedJson = null;
         try {
             parsedJson = new JSONObject(json);
@@ -59,7 +59,7 @@ public class MainController {
         }
     }
 
-    private void refreshData(JSONObject json){
+    private void refreshData(JSONObject json) throws JSONException {
         if(json.has("temperature")){
             model.getSensorValues().setTemperature(json.getDouble("temperature"));
         }

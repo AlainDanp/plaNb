@@ -92,7 +92,6 @@ public class SensorValues {
     public DoubleProperty temperatureProperty() {
         return temperature;
     }
-
     public double getHumidity() {
         return humidity.get();
     }

@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TitledPane?>
-<?import javafx.scene.control.Tooltip?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="426.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/8.0.162-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.epickiwi.pmf.view.gui.MainController">
+<AnchorPane prefHeight="426.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.epickiwi.pmf.view.gui.MainController">
    <children>
       <HBox layoutX="200.0" layoutY="110.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -81,7 +71,7 @@
             </AnchorPane>
             <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
                <children>
-                  <TitledPane style="-fx-border-radius: 0;" text="Température" VBox.vgrow="ALWAYS">
+                  <TitledPane prefHeight="21.0" prefWidth="178.0" style="-fx-border-radius: 0;" text="Température" textFill="#9e1414" VBox.vgrow="ALWAYS">
                     <content>
                       <AnchorPane>
                            <children>
@@ -142,9 +132,9 @@
                         </AnchorPane>
                     </content>
                   </TitledPane>
-                  <TitledPane style="-fx-border-radius: 0;" text="Humidité" VBox.vgrow="ALWAYS">
+                  <TitledPane style="-fx-border-radius: 0;" text="Humidité" textFill="#b50f0f" VBox.vgrow="ALWAYS">
                     <content>
-                      <AnchorPane>
+                      <AnchorPane prefHeight="283.0" prefWidth="748.0">
                            <children>
                               <HBox AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
@@ -164,7 +154,7 @@
                                              <children>
                                                 <Label text="Humidité mesurée" GridPane.halignment="LEFT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
                                                    <font>
-                                                      <Font name="System Bold" size="13.0" />
+                                                      <Font name="Algerian" size="15.0" />
                                                    </font>
                                                 </Label>
                                                 <Label fx:id="humidityLabel" text="12 °C" GridPane.columnIndex="1" />
@@ -200,6 +190,9 @@
                            </children>
                         </AnchorPane>
                     </content>
+                     <effect>
+                        <ColorAdjust hue="-0.02" saturation="0.54" />
+                     </effect>
                   </TitledPane>
                </children>
             </VBox>
